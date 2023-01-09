@@ -3,10 +3,11 @@ export default class View {
   _data;
   render(data) {
     if (!data || (Array.isArray(data) && data.length === 0)) {
-      console.log("error generat4ed");
+      console.log("error generated");
       throw new Error("No results found");
     }
     this._data = data;
+    console.log(this._data);
     const markup = this._generateMarkup();
     // recipeContainer.innerHTML = "";
     this._clear();
