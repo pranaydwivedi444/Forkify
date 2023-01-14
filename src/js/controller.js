@@ -49,6 +49,12 @@ const controlSearchResults = async function () {
 // https://forkify-api.herokuapp.com/v2
 
 // showRecipe();
+const controlServings = function (newServings) {
+  //changing the state
+  model.updateServings(newServings);
+  //rending the view again
+  recipeView.render(model.state.recipe);
+};
 const controlPagination = function (page) {
   resultsView.render(model.getSearchResultsPage(page));
   paginationView.render(model.state.search);
@@ -57,6 +63,7 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipe);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  recipeView.addHandlerUpdateServings(controlServings);
 };
 init();
 // window.addEventListener("hashchange", showRecipe);
