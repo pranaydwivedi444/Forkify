@@ -16,6 +16,8 @@ const controlRecipe = async function () {
     if (!id) return;
 
     recipeView.renderMarker(recipeContainer);
+    //results view update selected recipe
+    resultsView.update(model.getSearchResultsPage());
     //load recipe
     await model.loadRecipe(id);
 
@@ -53,7 +55,8 @@ const controlServings = function (newServings) {
   //changing the state
   model.updateServings(newServings);
   //rending the view again
-  recipeView.render(model.state.recipe);
+  // recipeView.render(model.state.recipe);
+  recipeView.update(model.state.recipe);
 };
 const controlPagination = function (page) {
   resultsView.render(model.getSearchResultsPage(page));
